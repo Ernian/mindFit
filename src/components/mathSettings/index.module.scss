@@ -1,0 +1,32 @@
+.settings {
+  padding: 14px 0;
+
+  .header {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .input {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .button {
+    display: block;
+    margin: 60px auto 0;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #7dd3fc;
+    transition: 0.3s;
+
+    &:hover,
+    &:active {
+      background-color: #bae6fd;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.game {
+  .button {
+    display: block;
+    margin: 60px auto 0;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #7dd3fc;
+    transition: 0.3s;
+
+    &:hover,
+    &:active {
+      background-color: #bae6fd;
+    }
+  }
+}

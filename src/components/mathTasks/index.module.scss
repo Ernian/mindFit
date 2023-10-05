@@ -1,0 +1,132 @@
+.tasks {
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 36px;
+  font-size: 36px;
+  overflow: hidden;
+
+  .current-task,
+  .next-task {
+    position: relative;
+  }
+
+  .next-task {
+    opacity: 0.6;
+    transform: scale(0.75);
+  }
+
+
+  .current-task-appearence {
+    animation-name: current-task-appearence;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+  }
+
+  @keyframes current-task-appearence {
+    from {
+      top: 150px
+    }
+
+    to {
+      top: 0
+    }
+  }
+
+  .next-task-appearence-first {
+    animation-name: next-task-appearence-first;
+    animation-fill-mode: backwards;
+    animation-delay: 0.25s;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+  }
+
+  @keyframes next-task-appearence-first {
+    from {
+      top: 150px
+    }
+
+    to {
+      top: 0
+    }
+  }
+
+  .next-task-appearence {
+    animation-name: next-task-appearence;
+    animation-fill-mode: backwards;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+  }
+
+  @keyframes next-task-appearence {
+    from {
+      top: 150px
+    }
+
+    to {
+      top: 0
+    }
+  }
+
+  .current-task-fade {
+    animation-name: current-task-fade;
+    animation-delay: 0.4s;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes current-task-fade {
+    from {
+      bottom: 0;
+      opacity: 1;
+    }
+
+    to {
+      bottom: 100px;
+      opacity: 0;
+      transform: scale(0.75);
+    }
+  }
+
+  .next-task-transform {
+    animation-name: next-task-transform;
+    animation-delay: 0.6s;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes next-task-transform {
+    to {
+      bottom: 51px;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .correct-highlight {
+    animation-name: correct-highlight;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes correct-highlight {
+    to {
+      color: #86efac;
+    }
+  }
+
+  .wrong-highlight {
+    animation-name: wrong-highlight;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes wrong-highlight {
+    to {
+      color: #f43f5e;
+    }
+  }
+}
