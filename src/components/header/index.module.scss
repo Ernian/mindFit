@@ -1,0 +1,18 @@
+.header {
+  padding: 10px;
+  background: linear-gradient(45deg, #1e1b4b, #581c87);
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  a {
+    text-transform: uppercase;
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+}

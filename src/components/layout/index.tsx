@@ -1,4 +1,7 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import { Header } from '../header'
+import { Footer } from '../footer'
+import css from './index.module.scss'
 
 interface LayoutProps {
   isLoading?: boolean
@@ -6,20 +9,16 @@ interface LayoutProps {
 
 const Layout = ({ isLoading }: LayoutProps) => {
   return (
-    <>
-      <header>
-        header
-        <Link to='/'>Main</Link>
-        <Link to='/math-one-love'>Math</Link>
-        <Link to='/pairs'>Pairs</Link>
-      </header>
-      <main>
-        main
-        {isLoading && <h2>Loading</h2>}
-        <Outlet />
-      </main>
-      <footer>footer</footer>
-    </>
+    <main className={css.main}>
+      <Header />
+      <div className={css.content}>
+        <div className='container'>
+          {isLoading && <h2>Loading...</h2>}
+          <Outlet />
+        </div>
+      </div>
+      <Footer />
+    </main>
   )
 }
 
