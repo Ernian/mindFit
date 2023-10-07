@@ -27,31 +27,31 @@ const getRange = (difficulty: number, operation: Operations): [number, number] =
   if (difficulty === 1) {
     switch (operation) {
       case 'multiplication':
-        return [-10, 10]
+        return [0, 10]
       case 'division':
-        return [[-10, -1], [1, 10]][Math.round(Math.random())] as [number, number]
+        return [1, 10]
       default:
-        return [-20, 50]
+        return [0, 50]
     }
   }
   if (difficulty === 2) {
     switch (operation) {
       case 'multiplication':
-        return [-15, 15]
+        return [0, 15]
       case 'division':
-        return [[-15, -1], [1, 15]][Math.round(Math.random())] as [number, number]
+        return [1, 15]
       default:
-        return [-40, 100]
+        return [0, 100]
     }
   }
 
   switch (operation) {
     case 'multiplication':
-      return [-20, 20]
+      return [0, 20]
     case 'division':
-      return [[-20, -1], [1, 20]][Math.round(Math.random())] as [number, number]
+      return [1, 20]
     default:
-      return [-80, 200]
+      return [0, 200]
   }
 }
 
