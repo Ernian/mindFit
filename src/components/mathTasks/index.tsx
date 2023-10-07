@@ -44,33 +44,33 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
 
     setTimeout(() => {
       setAnswer([])
-      setTasks([nextTask, nextTask])
+      setTasks(() => [nextTask, nextTask])
     }, 450)
 
     setTimeout(() => {
-      setTasks([nextTask, getMathTask(difficulty)])
+      setTasks(() => [nextTask, getMathTask(difficulty)])
     }, 850)
   }
 
   useEffect(() => {
-    setTimeout(() => setAnswerStatus('uncertainly'), 300)
+    setTimeout(() => setAnswerStatus(() => 'uncertainly'), 300)
   }, [currentTask])
 
   useEffect(() => {
     const keyboardHandler = (event: KeyboardEvent) => {
       if (event.code === 'Backspace') {
-        setAnswer(answer.slice(0, -1))
+        setAnswer(answer => answer.slice(0, -1))
       }
 
       if (answer.length >= currentTask.answer.toString().length) {
         return
       }
 
-      //todo regExp
-      if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-'].includes(event.key)) {
+      if (/[\d-]/.test(event.key)) {
         setAnswer(answer => [...answer, event.key])
       }
     }
+
     checkAnswer()
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
