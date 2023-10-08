@@ -1,0 +1,15 @@
+.button {
+  background-color: #312e81;
+  border-radius: 10px;
+  font-size: 36px;
+  color: azure;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #4338ca;
+  }
+
+  &:active {
+    background-color: #6366f1;
+  }
+}

@@ -1,4 +1,5 @@
 import { MathTasks } from '../mathTasks'
+import { ScreenKeyboard } from '../screenKeyboard'
 import { Settings } from '../../types'
 import css from './index.module.scss'
 
@@ -12,12 +13,12 @@ interface MathGameProps {
 export const MathGame = ({ settings, stopGame }: MathGameProps) => {
   const { difficulty, time } = settings
 
-
   return (
     <div className={css.game}>
       <div className={css.timer}>Time: {time}</div>
       <MathTasks difficulty={difficulty} />
       <button className={css.button} onClick={stopGame}>Stop</button>
+      <ScreenKeyboard />
     </div>
   )
 }

@@ -7,7 +7,6 @@ const MathPage = () => {
   const [isGameStart, setIsGameStart] = useState(false)
   const [settings, setSettings] = useState<Settings>({ difficulty: 1, time: 120 })
 
-
   const startGame = () => setIsGameStart(true)
   const stopGame = () => setIsGameStart(false)
 

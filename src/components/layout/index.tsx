@@ -12,10 +12,8 @@ const Layout = ({ isLoading }: LayoutProps) => {
     <main className={css.main}>
       <Header />
       <div className={css.content}>
-        <div className='container'>
-          {isLoading && <h2>Loading...</h2>}
-          <Outlet />
-        </div>
+        {isLoading && <h2>Loading...</h2>}
+        <Outlet />
       </div>
       <Footer />
     </main>

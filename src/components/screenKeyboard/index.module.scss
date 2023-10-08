@@ -1,0 +1,17 @@
+.keyboard {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 40dvh;
+  background-color: #1e1b4b;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: repeat(1fr, 4);
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}

@@ -58,7 +58,8 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
 
   useEffect(() => {
     const keyboardHandler = (event: KeyboardEvent) => {
-      if (event.code === 'Backspace') {
+
+      if (event.key === 'Backspace') {
         setAnswer(answer => answer.slice(0, -1))
       }
 
@@ -90,7 +91,7 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
     [css['current-task-fade']]: answerStatus !== 'uncertainly',
   })
 
-  const answerClasses = classNames({
+  const highlightClasses = classNames({
     [css['correct-highlight']]: answerStatus === 'correct',
     [css['wrong-highlight']]: answerStatus === 'wrong',
   })
@@ -105,7 +106,7 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
   return (
     <div className={css.tasks}>
       <div className={currentTaskClasses}>
-        <span className={answerClasses}>
+        <span className={highlightClasses}>
           {currentTask.firstNumber}&nbsp;
           {getSign(currentTask.operation)}&nbsp;
           {currentTask.secondNumber} =
