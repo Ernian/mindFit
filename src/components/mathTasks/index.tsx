@@ -109,7 +109,7 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
         <span className={highlightClasses}>
           {currentTask.firstNumber}&nbsp;
           {getSign(currentTask.operation)}&nbsp;
-          {currentTask.secondNumber} =
+          {currentTask.secondNumber} =&nbsp;
           {answer.join('')}
         </span>
       </div>

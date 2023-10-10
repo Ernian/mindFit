@@ -1,3 +1,4 @@
+import { Timer } from '../timer'
 import { MathTasks } from '../mathTasks'
 import { ScreenKeyboard } from '../screenKeyboard'
 import { Settings } from '../../types'
@@ -8,14 +9,12 @@ interface MathGameProps {
   stopGame: () => void
 }
 
-
-
 export const MathGame = ({ settings, stopGame }: MathGameProps) => {
   const { difficulty, time } = settings
 
   return (
     <div className={css.game}>
-      <div className={css.timer}>Time: {time}</div>
+      <Timer time={time} stopGame={stopGame} />
       <MathTasks difficulty={difficulty} />
       <button className={css.button} onClick={stopGame}>Stop</button>
       <ScreenKeyboard />
