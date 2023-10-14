@@ -5,7 +5,9 @@ import { MathTask, Operations } from '../../types'
 import css from './index.module.scss'
 
 interface TasksProps {
-  difficulty: number
+  difficulty: number,
+  timeIsOver: boolean,
+  stopGame: () => void
 }
 
 type AnswerStatus = 'correct' | 'wrong' | 'uncertainly'
@@ -21,7 +23,7 @@ const getSign = (operation: Operations) => {
   return signs[operation]
 }
 
-export const MathTasks = ({ difficulty }: TasksProps) => {
+export const MathTasks = ({ difficulty, timeIsOver, stopGame }: TasksProps) => {
   const [currentTask, setCurrentTask] = useState<MathTask>(getMathTask(difficulty))
   const [nextTask, setNextTask] = useState<MathTask>(getMathTask(difficulty))
   const [answer, setAnswer] = useState<string[]>([])
@@ -52,6 +54,9 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
   }
 
   useEffect(() => {
+    if (timeIsOver) {
+      stopGame()
+    }
     setTimeout(() => setAnswerStatus('uncertainly'), 200)
   }, [currentTask])
 

@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import css from './index.module.scss'
 
 interface TimerProps {
   time: number,
-  stopGame: () => void
+  setTimeIsOver: Dispatch<SetStateAction<boolean>>,
 }
 
-export const Timer = ({ time, stopGame }: TimerProps) => {
+export const Timer = ({ time, setTimeIsOver }: TimerProps) => {
   const [seconds, setSeconds] = useState(time)
 
   useEffect(() => {
 
     const id = setInterval(() => {
-      if (seconds > 1) {
+      if (seconds > 0) {
         setSeconds(seconds => seconds - 1)
       } else {
-        stopGame()
+        clearInterval(id)
+        setTimeIsOver(true)
       }
     }, 1000)
 
