@@ -77,7 +77,7 @@
 
   .current-task-fade {
     animation-name: current-task-fade;
-    animation-delay: 0.4s;
+    animation-delay: 0.25s;
     animation-duration: 0.2s;
     animation-fill-mode: both;
   }
@@ -111,26 +111,10 @@
   }
 
   .correct-highlight {
-    animation-name: correct-highlight;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes correct-highlight {
-    to {
-      color: #86efac;
-    }
+    color: #86efac;
   }
 
   .wrong-highlight {
-    animation-name: wrong-highlight;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes wrong-highlight {
-    to {
-      color: #f43f5e;
-    }
+    color: #f43f5e;
   }
 }

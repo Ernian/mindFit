@@ -8,7 +8,6 @@ interface TasksProps {
   difficulty: number
 }
 
-type TaskState = [MathTask, MathTask]
 type AnswerStatus = 'correct' | 'wrong' | 'uncertainly'
 
 const getSign = (operation: Operations) => {
@@ -23,8 +22,8 @@ const getSign = (operation: Operations) => {
 }
 
 export const MathTasks = ({ difficulty }: TasksProps) => {
-  const getTasks = (): TaskState => [getMathTask(difficulty), getMathTask(difficulty)]
-  const [[currentTask, nextTask], setTasks] = useState<TaskState>(getTasks)
+  const [currentTask, setCurrentTask] = useState<MathTask>(getMathTask(difficulty))
+  const [nextTask, setNextTask] = useState<MathTask>(getMathTask(difficulty))
   const [answer, setAnswer] = useState<string[]>([])
   const [isFirstTask, setIsFirstTask] = useState<boolean>(true)
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('uncertainly')
@@ -44,20 +43,21 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
 
     setTimeout(() => {
       setAnswer([])
-      setTasks(() => [nextTask, nextTask])
-    }, 450)
+      setCurrentTask(nextTask)
+    }, 400)
 
     setTimeout(() => {
-      setTasks(() => [nextTask, getMathTask(difficulty)])
-    }, 850)
+      setNextTask(getMathTask(difficulty))
+    }, 600)
   }
 
   useEffect(() => {
-    setTimeout(() => setAnswerStatus(() => 'uncertainly'), 300)
+    setTimeout(() => setAnswerStatus('uncertainly'), 200)
   }, [currentTask])
 
   useEffect(() => {
     const keyboardHandler = (event: KeyboardEvent) => {
+      if (answerStatus !== "uncertainly") return
 
       if (event.key === 'Backspace') {
         setAnswer(answer => answer.slice(0, -1))
@@ -74,16 +74,12 @@ export const MathTasks = ({ difficulty }: TasksProps) => {
 
     checkAnswer()
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     document.addEventListener('keyup', keyboardHandler)
 
     return () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       document.removeEventListener('keyup', keyboardHandler)
     }
-  }, [answer])
+  }, [answer, answerStatus])
 
   const currentTaskClasses = classNames({
     [css['current-task']]: true,
