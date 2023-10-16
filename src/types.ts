@@ -1,8 +1,3 @@
-export interface Settings {
-  difficulty: number,
-  time: number
-}
-
 export interface MathTask {
   firstNumber: number,
   secondNumber: number,

@@ -3,12 +3,8 @@ import classNames from 'classnames'
 import { getMathTask } from '../../mathService'
 import { MathTask, Operations } from '../../types'
 import css from './index.module.scss'
-
-interface TasksProps {
-  difficulty: number,
-  timeIsOver: boolean,
-  stopGame: () => void
-}
+import { useAppDispatch, useAppSelector } from '../../hooks/useAppStore'
+import { actionStopGame } from '../../store/mathSlice'
 
 type AnswerStatus = 'correct' | 'wrong' | 'uncertainly'
 
@@ -23,7 +19,10 @@ const getSign = (operation: Operations) => {
   return signs[operation]
 }
 
-export const MathTasks = ({ difficulty, timeIsOver, stopGame }: TasksProps) => {
+export const MathTasks = () => {
+  const { difficulty, time } = useAppSelector(state => state.math.settings)
+  const dispatch = useAppDispatch()
+
   const [currentTask, setCurrentTask] = useState<MathTask>(getMathTask(difficulty))
   const [nextTask, setNextTask] = useState<MathTask>(getMathTask(difficulty))
   const [answer, setAnswer] = useState<string[]>([])
@@ -54,8 +53,8 @@ export const MathTasks = ({ difficulty, timeIsOver, stopGame }: TasksProps) => {
   }
 
   useEffect(() => {
-    if (timeIsOver) {
-      stopGame()
+    if (time === 0) {
+      dispatch(actionStopGame())
     }
     setTimeout(() => setAnswerStatus('uncertainly'), 200)
   }, [currentTask])

@@ -1,13 +1,13 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import css from './index.module.scss'
+import { useAppDispatch, useAppSelector } from '../../hooks/useAppStore'
+import { actionSetTime } from '../../store/mathSlice'
 
-interface TimerProps {
-  time: number,
-  setTimeIsOver: Dispatch<SetStateAction<boolean>>,
-}
+export const Timer = () => {
+  const { time } = useAppSelector(state => state.math.settings)
+  const dispatch = useAppDispatch()
 
-export const Timer = ({ time, setTimeIsOver }: TimerProps) => {
   const [seconds, setSeconds] = useState(time)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const Timer = ({ time, setTimeIsOver }: TimerProps) => {
         setSeconds(seconds => seconds - 1)
       } else {
         clearInterval(id)
-        setTimeIsOver(true)
+        dispatch(actionSetTime(0))
       }
     }, 1000)
 
