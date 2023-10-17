@@ -42,6 +42,14 @@ export const MathSettings = () => {
         />
         <span>Time: {settings.time}</span>
       </div>
+      {
+        sessionStorage.getItem('lastResult') &&
+        sessionStorage.getItem('bestResult') &&
+        <>
+          <p>Last result: {sessionStorage.getItem('lastResult')}</p>
+          <p>Best result: {sessionStorage.getItem('bestResult')}</p>
+        </>
+      }
       <button
         className={css.button}
         onClick={() => dispatch(actionStartGame())}

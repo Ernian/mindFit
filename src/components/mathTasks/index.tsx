@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { getMathTask } from '../../mathService'
 import { MathTask, Operations } from '../../types'
-import css from './index.module.scss'
 import { useAppDispatch, useAppSelector } from '../../hooks/useAppStore'
 import { actionStopGame } from '../../store/mathSlice'
+import css from './index.module.scss'
 
 type AnswerStatus = 'correct' | 'wrong' | 'uncertainly'
 
@@ -28,6 +28,7 @@ export const MathTasks = () => {
   const [answer, setAnswer] = useState<string[]>([])
   const [isFirstTask, setIsFirstTask] = useState<boolean>(true)
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('uncertainly')
+  const [{ correct, total }, setStatistic] = useState({ correct: 0, total: 0 })
 
   const checkAnswer = () => {
     if (answer.length !== currentTask.answer.toString().length) {
@@ -53,7 +54,38 @@ export const MathTasks = () => {
   }
 
   useEffect(() => {
+    const watchStatistic = () => {
+      if (answerStatus === 'correct') {
+        setStatistic(({ correct, total }) => ({
+          correct: correct + 1,
+          total: total + 1,
+        }))
+      }
+      if (answerStatus === 'wrong') {
+        setStatistic(({ correct, total }) => ({
+          correct,
+          total: total + 1,
+        }))
+      }
+    }
+    watchStatistic()
+  }, [answerStatus])
+
+  useEffect(() => {
     if (time === 0) {
+      const bestResult = sessionStorage.getItem('bestResult')
+
+      sessionStorage.setItem('lastResult', `${correct}/${total}`)
+
+      if (!bestResult) {
+        sessionStorage.setItem('bestResult', `${correct}/${total}`)
+      } else {
+        const bestCorrect = parseInt(bestResult.split('/')[0])
+
+        if (correct > bestCorrect) {
+          sessionStorage.setItem('bestResult', `${correct}/${total}`)
+        }
+      }
       dispatch(actionStopGame())
     }
     setTimeout(() => setAnswerStatus('uncertainly'), 200)
@@ -61,7 +93,7 @@ export const MathTasks = () => {
 
   useEffect(() => {
     const keyboardHandler = (event: KeyboardEvent) => {
-      if (answerStatus !== "uncertainly") return
+      if (answerStatus !== 'uncertainly') return
 
       if (event.key === 'Backspace') {
         setAnswer(answer => answer.slice(0, -1))
@@ -105,6 +137,7 @@ export const MathTasks = () => {
 
   return (
     <div className={css.tasks}>
+      <div className={css.statistic}>{correct} / {total}</div>
       <div className={currentTaskClasses}>
         <span className={highlightClasses}>
           {currentTask.firstNumber}&nbsp;
