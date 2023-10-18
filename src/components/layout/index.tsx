@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { Header } from '../header'
 import { Footer } from '../footer'
+import { Loader } from '../loader'
 import css from './index.module.scss'
 
 interface LayoutProps {
@@ -12,7 +13,7 @@ const Layout = ({ isLoading }: LayoutProps) => {
     <main className={css.main}>
       <Header />
       <div className={css.content}>
-        {isLoading && <h2>Loading...</h2>}
+        {isLoading && <Loader />}
         <Outlet />
       </div>
       <Footer />
