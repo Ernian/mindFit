@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import css from './index.module.scss'
-import { useAppDispatch, useAppSelector } from '../../hooks/useAppStore'
-import { actionSetTime } from '../../store/mathSlice'
+import { useAppDispatch, useAppSelector } from '../../../hooks/useAppStore'
+import { actionSetTime } from '../../../store/mathSlice'
 
 export const Timer = () => {
   const { time } = useAppSelector(state => state.math.settings)

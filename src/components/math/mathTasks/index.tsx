@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { getMathTask } from '../../mathService'
-import { MathTask, Operations } from '../../types'
-import { useAppDispatch, useAppSelector } from '../../hooks/useAppStore'
-import { actionStopGame } from '../../store/mathSlice'
+import { getMathTask } from '../mathService'
+import { MathTask, Operations } from '../../../types'
+import { useAppDispatch, useAppSelector } from '../../../hooks/useAppStore'
+import { actionStopGame } from '../../../store/mathSlice'
 import css from './index.module.scss'
 
 type AnswerStatus = 'correct' | 'wrong' | 'uncertainly'

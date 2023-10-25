@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/useAppStore'
-import { actionSetDifficulty, actionSetTime, actionStartGame } from '../../store/mathSlice'
+import { useAppDispatch, useAppSelector } from '../../../hooks/useAppStore'
+import { actionSetDifficulty, actionSetTime, actionStartGame } from '../../../store/mathSlice'
 import css from './index.module.scss'
 
 export const MathSettings = () => {

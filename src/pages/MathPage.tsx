@@ -1,5 +1,5 @@
-import { MathSettings } from '../components/mathSettings'
-import { MathGame } from '../components/mathGame'
+import { MathSettings } from '../components/math/mathSettings'
+import { MathGame } from '../components/math/mathGame'
 import { useAppSelector } from '../hooks/useAppStore'
 
 const MathPage = () => {

@@ -1,4 +1,4 @@
-import { Operations, MathTask } from './types'
+import { Operations, MathTask } from '../../types'
 
 const getTwoRandomNumbersInRange = (min: number, max: number): [number, number] => (
   [min + Math.floor(Math.random() * (max - min + 1)),

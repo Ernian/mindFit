@@ -1,8 +1,8 @@
 import { Timer } from '../timer'
 import { MathTasks } from '../mathTasks'
 import { ScreenKeyboard } from '../screenKeyboard'
-import { useAppDispatch } from '../../hooks/useAppStore'
-import { actionStopGame } from '../../store/mathSlice'
+import { useAppDispatch } from '../../../hooks/useAppStore'
+import { actionStopGame } from '../../../store/mathSlice'
 import css from './index.module.scss'
 
 export const MathGame = () => {
