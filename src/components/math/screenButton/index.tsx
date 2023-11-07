@@ -1,3 +1,4 @@
+import { FiDelete } from 'react-icons/fi'
 import css from './index.module.scss'
 
 export const ScreenButton = ({ button }: { button: string }) => {
@@ -14,7 +15,7 @@ export const ScreenButton = ({ button }: { button: string }) => {
       className={css.button}
       onClick={onClickHandler}
     >
-      {button}
+      {button === 'del' ? <FiDelete /> : button}
     </button>
   )
 }
