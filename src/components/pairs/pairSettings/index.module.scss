@@ -1,0 +1,44 @@
+.settings {
+  padding: 32px;
+  max-width: 480px;
+  margin: 0 auto;
+
+
+  .header {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    @media (min-width:480px) {
+      font-size: 36px;
+    }
+  }
+
+  .select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+
+    select {
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+  }
+
+  .button {
+    display: block;
+    margin: 60px auto 0;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #7dd3fc;
+    transition: 0.3s;
+
+    &:hover,
+    &:active {
+      background-color: #bae6fd;
+    }
+  }
+}

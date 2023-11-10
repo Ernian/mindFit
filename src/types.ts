@@ -6,3 +6,4 @@ export interface MathTask {
 }
 
 export type Operations = 'addition' | 'subtraction' | 'multiplication' | 'division'
+export type CountOfCards = 4 | 8 | 12

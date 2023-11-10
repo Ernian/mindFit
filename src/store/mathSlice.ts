@@ -13,7 +13,7 @@ const initialState: InitialState = {
   isPlay: false,
   settings: {
     difficulty: 1,
-    time: 120
+    time: 90
   }
 }
 

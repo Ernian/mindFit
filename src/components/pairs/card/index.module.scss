@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .cool,
+  .card,
+  .question,
+  .icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cool {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1b4b;
+    font-size: 3em;
+    border-radius: 10px;
+  }
+
+  .card {
+    font-size: 4em;
+    transform-style: preserve-3d;
+    transition: all 0.4s ease;
+  }
+
+  .card.flip {
+    transform: rotateY(180deg);
+  }
+
+  .card.find {
+    color: #84cc16;
+  }
+
+  .question,
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    background-color: #1e1b4b;
+    border-radius: 10px;
+  }
+
+  .question {
+    cursor: pointer;
+  }
+
+  .icon {
+    transform: rotateY(180deg);
+  }
+}

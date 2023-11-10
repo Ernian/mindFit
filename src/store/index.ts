@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import mathReducer from './mathSlice'
+import pairsReducer from './pairSlice'
 
 const store = configureStore({
   reducer: {
-    math: mathReducer
+    math: mathReducer,
+    pairs: pairsReducer
   }
 })
 
