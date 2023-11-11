@@ -9,12 +9,14 @@ import {
 import { question } from '../icons'
 import css from './index.module.scss'
 
-export const Card = ({ icon }: { icon: JSX.Element }) => {
+export const Card = ({ icon, isSmile }: { icon: JSX.Element, isSmile: boolean }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { findedCards, openedCard } = useAppSelector(state => state.pairs)
   const dispatch = useAppDispatch()
 
   const iconName = icon.type.name as string
+  console.log(iconName);
+
 
   const cardClasses = classNames({
     [css['card']]: true,
@@ -51,8 +53,10 @@ export const Card = ({ icon }: { icon: JSX.Element }) => {
   return (
     <div className={css.container}>
       {
-        icon.type.name === 'ImCool' ?
-          <div className={css.cool}>{icon}</div > :
+        isSmile ?
+          <div className={css.cool}>
+            {icon}
+          </div > :
           <div className={cardClasses}>
             <div className={css.question} onClick={openCard}>
               {question}

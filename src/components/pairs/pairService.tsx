@@ -5,9 +5,11 @@ import { icons, imCool } from './icons'
 export class PairService {
   icons: JSX.Element[] = icons
   countOfCards: CountOfCards
+  needSmileIcon: boolean
 
   constructor(countOfCards: CountOfCards) {
     this.countOfCards = countOfCards
+    this.needSmileIcon = !Number.isInteger((2 * this.countOfCards) ** 0.5)
   }
 
   sliceIcons() {
@@ -23,7 +25,7 @@ export class PairService {
   }
 
   addCentralIcon() {
-    if (!Number.isInteger((2 * this.countOfCards) ** 0.5)) {
+    if (this.needSmileIcon) {
       this.icons.splice(this.countOfCards, 0, imCool)
     }
   }
@@ -50,6 +52,7 @@ export class PairService {
       <Card
         key={index}
         icon={icon}
+        isSmile={this.needSmileIcon && index === this.countOfCards}
       />
     ))
   }
